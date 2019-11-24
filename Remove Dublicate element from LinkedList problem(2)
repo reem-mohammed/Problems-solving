@@ -1,0 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import java.util.HashSet;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class RemoveDublicateLinkedList2 {
+    
+    public void removeDublicateNodes(Node head){
+       Node curr = head; 
+       Node prev=null;
+       
+       HashSet <Integer> hst=new HashSet<>();
+       while(curr!=null){
+           if(hst.contains(curr.data)){
+               prev.next=curr.next;
+           }else{
+               hst.add(curr.data);
+               prev=curr;
+           }
+           curr=curr.next;
+       }
+       
+       Node temp = head;
+        while (temp != null) {
+            System.out.print("-" + temp.data + "-");
+            temp = temp.next;
+        }
+    }
+ 
+    
+    public static void main(String args[]) {
+        Node nodeA = new Node();
+        Node nodeB = new Node();
+        Node nodeC = new Node();
+        Node nodeD = new Node();
+
+        nodeA.data = 1;
+        nodeB.data = 2;
+        nodeC.data = 2;
+        nodeD.data = 4;
+
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+
+        RemoveDublicateLinkedList2 r = new RemoveDublicateLinkedList2();
+        r.removeDublicateNodes(nodeA);
+
+    }
+}
