@@ -1,0 +1,41 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class getNonrepeatingChar {
+    public char getNonRepeationgChar(String str){
+        
+        Set<Character> repeationg = new HashSet<>();
+        List <Character> nonRepeating=new ArrayList();
+        
+        for(int i=0 ;i<str.length();i++){
+            if(nonRepeating.contains(str.charAt(i))){
+                nonRepeating.remove(str.charAt(i));
+                repeationg.add(str.charAt(i));
+                
+            }else{
+                nonRepeating.add(str.charAt(i));
+            }
+        }
+        
+        
+        return nonRepeating.get(0);
+    }
+    
+    public static void main (String args[]){
+        getNonrepeatingChar ch=new getNonrepeatingChar();
+        System.out.print(ch.getNonRepeationgChar("Reem"));
+    }
+}
