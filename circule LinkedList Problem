@@ -1,0 +1,54 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import java.util.HashSet;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class circuleLinkedList {
+
+    public boolean circList(Node head) {
+        if (head == null){
+            return false;
+        }
+        HashSet<Node> hs = new HashSet<>();
+        for (Node curr = head; curr != null; curr = curr.next) {
+            if (hs.contains(curr)) {
+                return true;
+            } else {
+
+                hs.add(curr);
+            }
+        }
+
+        return false;
+
+    }
+
+    public static void main(String args[]) {
+        circuleLinkedList l = new circuleLinkedList();
+        Node nodeA = new Node();
+        Node nodeB = new Node();
+        Node nodeC = new Node();
+        Node nodeD = new Node();
+
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+        nodeD.next = nodeB;
+
+        nodeA.data = 3;
+        nodeB.data = 4;
+        nodeC.data = 5;
+        nodeD.data = 6;
+
+        System.out.print(l.circList(nodeA));
+
+    }
+
+}
