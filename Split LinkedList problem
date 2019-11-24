@@ -1,0 +1,79 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+import com.mycompany.learn.LinkedList;
+
+/**
+ *
+ * @author reemabdallah
+ */
+class Node {
+
+    Node next;
+    int data;
+}
+
+//--------------------------------------------
+public class SpiltLinkedList {
+
+    public Node splitLinked(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Node temp = head;
+        Node temp2 = head;
+
+        int counter = 0;
+        
+        while (temp != null) {
+            temp = temp.next;
+            counter++;
+        }
+        
+        
+        int x = (int) (Math.ceil(counter + 1) / 2);
+
+        while (temp2 != null) {
+            
+            temp2 = temp2.next;
+            if (counter == x) {
+                break;
+            }
+            counter++;
+
+        }
+
+        //System.out.print(l.splitLinked(nodeA));
+//        Node splitNode = temp2.next;
+  //      temp2.next = null;
+
+        return null;
+    }
+//------------------------------------------------
+
+    public static void main(String args[]) {
+        SpiltLinkedList l = new SpiltLinkedList();
+        Node nodeA = new Node();
+        Node nodeB = new Node();
+        Node nodeC = new Node();
+        Node nodeD = new Node();
+        Node nodeE = new Node();
+
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+        nodeD.next = nodeE;
+
+        nodeA.data = 3;
+        nodeB.data = 4;
+        nodeC.data = 5;
+        nodeD.data = 6;
+        nodeE.data = 7;
+
+        System.out.print(l.splitLinked(nodeA));
+
+    }
+
+}
