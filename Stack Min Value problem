@@ -1,0 +1,63 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+import java.util.Stack;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class MinStack {
+
+    Stack<Integer> stack = new Stack();
+    Stack<Integer> min = new Stack();
+
+    public void push(int x) {
+        stack.push(x);
+
+        if (min.isEmpty()) {
+            min.push(x);
+        } else {
+            if (min.peek() >= x) {
+                min.push(x);
+            }
+        }
+
+    }
+
+    public int pop() {
+        if (stack.empty()) {
+            return -1;
+        }
+
+        int value = stack.pop();
+
+        if (min.peek() == value) {
+            int top = min.pop();
+        }
+
+        return value;
+    }
+
+    public static void main(String args[]) {
+        MinStack m = new MinStack();
+        m.push(6);
+        
+        m.push(7);
+        m.push(3);
+        m.push(4);
+        m.push(1);
+        
+        m.pop();
+
+        System.out.print(m.stack.peek()  +" " + m.min.peek());
+        
+        
+
+    }
+
+}
