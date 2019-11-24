@@ -1,0 +1,61 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author reemabdallah
+ */
+
+// 1 -> 2 -> 3 -> 4 -> null
+
+public class NthLinkedlistLastEle {
+    public Node nthLastIndex(Node head ,int n){
+        Node curr=head;
+        Node flower=head;
+        
+        for(int i=0;i<n;i++){
+            if(curr==null){ 
+                return null;
+            }
+            curr=curr.next;
+        }
+        
+        
+        
+        while(curr.next!=null){
+           flower= flower.next;
+           curr=curr.next;
+        }
+        return flower;
+        
+    }
+    public static void main (String args[]){
+    
+    NthLinkedlistLastEle nth = new NthLinkedlistLastEle();
+        Node nodeA = new Node();
+        Node nodeB = new Node();
+        Node nodeC = new Node();
+        Node nodeD = new Node();
+        Node nodeE = new Node();
+
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+        nodeD.next = nodeE;
+        nodeE.next = null;
+        
+
+        nodeA.data = 3;
+        nodeB.data = 4;
+        nodeC.data = 5;
+        nodeD.data = 6;
+        nodeD.data = 2;
+
+        System.out.print(nth.nthLastIndex(nodeA,3).data);
+    
+    }
+}
