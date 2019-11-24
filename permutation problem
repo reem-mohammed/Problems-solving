@@ -1,0 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package QI;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class permutation {
+
+   
+
+    public void per(Set<Character> inbound, String input) {
+        if (inbound.size() == input.length()) {
+            // print
+            for (char c : inbound) {
+                System.out.print(c);
+            }
+            System.out.println();
+            return;
+        }
+        
+        
+       //---------------------------------------------------
+        
+        
+        for (Character c : input.toCharArray()) {
+            if (inbound.contains(c)) {
+                continue;
+            }
+            inbound.add(c);
+            per(inbound, input);
+            inbound.remove(c);
+        }
+    }
+
+    
+       //------------------------------------------------------
+    
+    
+    public static void main(String args[]) {
+        permutation perm = new permutation();
+        //perm.permutation("DEMAH");
+
+        perm.per(new LinkedHashSet(), "ABC");
+
+//      for(char x : perm.getPerm("DEMAH")){
+//          System.out.print(x);
+//      }
+    }
+
+}
