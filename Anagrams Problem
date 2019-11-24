@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class Anagrams {
+    public boolean anagrams(String str1 , String str2){
+        
+         int [] letters =new int[256];
+        
+        if(str1.length()!=str2.length()){
+          return false;  
+        }
+        
+         str1 = str1.toLowerCase();
+         str2 = str2.toLowerCase();
+         
+         for(char c : str1.toCharArray()){
+             letters[c]++;
+         }
+        
+         for(char c : str2.toCharArray()){
+             letters[c]--;
+         }
+         
+         
+         for(int a : letters){
+             if(a !=0) {
+                 return false;
+             }
+         }
+        
+       
+        
+        
+        
+        return true;
+    }
+    
+    public static void main (String args[]){
+        Anagrams an=new Anagrams();
+        System.out.print(an.anagrams("aaabbbxaaa","bbbaaaaaa"));
+        
+    }
+    
+}
