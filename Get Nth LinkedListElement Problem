@@ -1,0 +1,64 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+/**
+ *
+ * @author reemabdallah
+ */
+
+// 1 - 2 - 3 - 4 -5 - null
+//c               ^
+//f        ^
+public class NthLinkedListElement {
+    public Node getNthEle(Node head , int n){
+     
+        
+        Node curr=head;
+        Node follower=head;
+        for(int i=0;i < n;i++){
+            curr=curr.next;
+        }
+        
+        
+        while(curr!=null){
+            curr=curr.next;
+            follower=follower.next;
+        }
+        
+        return follower;
+        
+    }
+    
+    
+    
+    
+    public static void main(String args[]){
+        Node nodeA=new Node();
+        Node nodeB=new Node();
+        Node nodeC=new Node();
+        Node nodeD=new Node();       
+      
+        
+        nodeA.data=1;
+        nodeB.data=2;
+        nodeC.data=3;
+        nodeD.data=4;
+       
+
+        
+        
+        nodeA.next=nodeB;
+        nodeB.next=nodeC;
+        nodeC.next=nodeD;
+        
+        NthLinkedListElement nth=new NthLinkedListElement();
+        System.out.print(nth.getNthEle(nodeA,2).data);
+       
+        
+    }
+    
+}
