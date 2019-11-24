@@ -1,0 +1,70 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import java.util.Stack;
+
+
+/**
+ *
+ * @author reemabdallah
+ */
+// 1 -> 2 -> 3 -> 2 c -> 1 f ->null
+// stack =[1,2]
+
+public class PalindromesLinkedList {
+    
+    public boolean Plaindromes(Node head){
+         Stack stack = new Stack(); 
+         
+         Node curr = head;
+         Node faster = head;
+         
+         while(faster!=null&& faster.next!=null){
+             stack.push(curr.data);
+             curr=curr.next;
+             faster=faster.next.next;
+         }
+         
+         if(faster!=null){
+             curr=curr.next;
+         }
+         
+         
+         //while(curr!=null){
+            // if(stack.pop().intValue()!=curr.value){
+           // return false
+        // }
+         
+         
+         
+        
+        return true;
+    }
+    public static void main(String args[]) {
+        PalindromesLinkedList p = new PalindromesLinkedList();
+        Node nodeA = new Node();
+        Node nodeB = new Node();
+        Node nodeC = new Node();
+        Node nodeD = new Node();
+        Node nodeE = new Node();
+
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+        nodeD.next = nodeE;
+      
+
+        nodeA.data = 1;
+        nodeB.data = 2;
+        nodeC.data = 3;
+        nodeD.data = 2;
+        nodeE.data = 1;
+
+        System.out.print(p.Plaindromes(nodeA));
+
+    }
+    
+}
