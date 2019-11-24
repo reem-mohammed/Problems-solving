@@ -1,0 +1,43 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+import java.util.Arrays;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class getSumTwoIntegerInArray {
+
+    public void getSum(int[] arrn, int k) {
+        int left = 0;
+        int right = arrn.length - 1;
+        Arrays.sort(arrn); //sort
+        while (left < right) {
+            int sum = arrn[left] + arrn[right];
+            if (sum == k) {
+                System.out.print("(" + arrn[left] + "," + arrn[right]+")");
+                right = right - 1;
+                left = left + 1;
+            } else if (sum < k) {
+                left = left + 1;
+            } else if (sum > k) {
+                right = right - 1;
+            }
+        }
+
+    }
+
+    public static void main(String args[]) {
+        getSumTwoIntegerInArray s = new getSumTwoIntegerInArray();
+        int[] arrn = {2, 4, 7, 5, 9, 10, -1};
+        int k = 9;
+        s.getSum(arrn, k);
+
+    }
+
+}
