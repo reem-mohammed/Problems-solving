@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author reemabdallah
+ */
+
+public class printReverseLinkedlist {
+    
+    public void reverseNodes(Node head){
+        if(head==null){
+            return ;
+        }
+        
+        reverseNodes(head.next);
+        System.out.print(head.data);
+        
+    }
+    
+    
+    
+    public static void main(String args[]){
+        printReverseLinkedlist list=new printReverseLinkedlist();
+        Node nodeA=new Node();
+        Node nodeB=new Node();
+        Node nodeC=new Node();
+        Node nodeD=new Node();
+        
+        nodeA.next=nodeB;
+        nodeB.next=nodeC;
+        nodeC.next=nodeD;
+        
+        nodeA.data=3;
+        nodeB.data=4;
+        nodeC.data=5;
+        nodeD.data=6;
+        
+        list.reverseNodes(nodeA);
+
+         
+        
+       
+        
+    }
+    
+    
+}
