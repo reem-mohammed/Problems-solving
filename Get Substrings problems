@@ -1,0 +1,75 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package QI;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class GetSubstrings {
+
+    public HashMap<String, Integer> getmatch(String str1, String str2) {
+
+        Set<Character> subStr = new HashSet<>();
+
+        HashMap<String, Integer> mp = new HashMap<>();
+
+        //add all the strr2 characters to the HashSet
+        for (int x = 0; x < str2.length(); x++) {
+            subStr.add(str2.charAt(x));
+
+        }
+
+        String substrValue;
+        for (int i = 0; i < str1.length(); i++) {
+            Set<Character> subStr2 = new HashSet<>();
+            for (int j = i; j < str1.length(); j++) {
+                if (subStr.contains(str1.charAt(j))) {
+                    subStr2.add(str1.charAt(j));
+
+                }
+
+                if (subStr2.size() == subStr.size()) {
+                    substrValue = str1.substring(i, j + 1);
+                    //System.out.println(substrValue + " " + i + "_" + j+1);
+                    mp.put(substrValue, substrValue.length());
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+        return mp;
+    }
+
+    public static void main(String args[]) {
+        GetSubstrings sub = new GetSubstrings();
+        sub.getmatch("ADOBECODEBANC", "ABC");
+
+        Set<Map.Entry<String, Integer>> m = sub.getmatch("ADOBECODEBANC", "ABC").entrySet();
+
+        int x = Integer.MAX_VALUE;
+        String y="";
+        for (Map.Entry<String, Integer> s : m) {
+
+            if (s.getValue() < x) {
+                x = s.getValue();
+                y=s.getKey();
+
+            }
+            
+        }
+          System.out.println(y + ':' + x);
+    }
+}
