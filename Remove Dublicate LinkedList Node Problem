@@ -1,0 +1,63 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+/**
+ *
+ * @author reemabdallah
+ */
+//1 - 2 - 3 - 2 -1
+public class RemoveDublicateLinkedList {
+
+    public void removeDublicate(Node head) {
+        if (head == null) {
+            return;
+        }
+        Node curr = head.next;
+        Node follow = head;
+        Node prev = head;
+        while (prev != null) {
+            while (curr != null) {
+                if (curr.data == prev.data) {
+                    follow.next = curr.next;
+                    curr.next = null;
+                }
+                curr = curr.next;
+                follow = follow.next;
+            }
+            follow = prev;
+            prev = prev.next;
+            curr = prev;
+            
+        }
+        Node temp = head;
+        while (temp != null) {
+            System.out.print("-" + temp.data + "-");
+            temp = temp.next;
+        }
+    }
+
+    public static void main(String args[]) {
+        Node nodeA = new Node();
+        Node nodeB = new Node();
+        Node nodeC = new Node();
+        Node nodeD = new Node();
+
+        nodeA.data = 1;
+        nodeB.data = 2;
+        nodeC.data = 2;
+        nodeD.data = 4;
+
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+
+        RemoveDublicateLinkedList remove = new RemoveDublicateLinkedList();
+        remove.removeDublicate(nodeA);
+
+    }
+
+}
