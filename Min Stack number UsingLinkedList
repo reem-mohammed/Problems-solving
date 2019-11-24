@@ -1,0 +1,78 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package InterviewsQ;
+
+/**
+ *
+ * @author reemabdallah
+ */
+class Nodee {
+
+    int data;
+    Nodee next;
+    Nodee oldMax;
+}
+
+public class StackMAx2UsingLinkedList {
+
+    Nodee head;
+    Nodee max;
+
+    public void push(int x) {
+        Nodee node = new Nodee();
+        if (head == null) {
+            return;
+        } else {
+            node.next = head;
+            head = node;
+
+        }
+        //set up Max Value.
+        if(max == null ||  node.data > max.data ) {
+            node.oldMax = max;
+            max = node;
+        }
+
+    }
+    
+   public int pop(){
+       
+       if(head==null){
+           throw new NullPointerException("Sorry No elements in the stack");
+       }
+       
+       Nodee temp=head;
+       head=temp.next;
+       
+       if(temp.oldMax!=null){
+       max=temp.oldMax;
+       } 
+       
+       
+       
+       return temp.data;
+   }
+   
+   
+   public int max(){
+       if(max==null){
+       throw new NullPointerException("Sorry The Max is null");    
+       }
+       return max.data;
+   }
+   
+   public static void main(String args[]){
+    StackMAx2UsingLinkedList list=new StackMAx2UsingLinkedList();
+    list.push(1);
+    list.push(2);
+    list.push(3);
+    System.out.print(list.max());
+   }
+
+}
+
+
+
