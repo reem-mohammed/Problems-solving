@@ -1,0 +1,56 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author reemabdallah
+ */
+public class circuleLinkedList2 {
+    public boolean circLinkedlist(Node head){
+       if(head==null){
+           return false;
+       }
+       
+       Node slow = head;
+       Node fast = head.next;
+       
+       while(fast!=null&&fast.next!=null){
+           if(fast==slow){
+               return true;
+           }
+           
+           slow=slow.next;
+           fast=fast.next.next;
+           
+       }
+    
+        
+        return false;
+    }
+    
+    public static void main(String args[]) {
+        circuleLinkedList2 l = new circuleLinkedList2();
+        Node nodeA = new Node();
+        Node nodeB = new Node();
+        Node nodeC = new Node();
+        Node nodeD = new Node();
+
+        nodeA.next = nodeB;
+        nodeB.next = nodeC;
+        nodeC.next = nodeD;
+        nodeD.next = nodeB;
+
+        nodeA.data = 3;
+        nodeB.data = 4;
+        nodeC.data = 5;
+        nodeD.data = 6;
+
+        System.out.print(l.circLinkedlist(nodeA));
+
+    }
+    
+}
